@@ -4,6 +4,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
+import MessageBox from "../components/message_box"
+import Books from "../components/books"
+import Book from "../components/book"
+
 // import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -16,24 +20,38 @@ const IndexPage = () => {
             ...GatsbyImageSharpFluid
           }
         }
-      }
+      },
+      tabi2Image: file(relativePath: { eq: "tabi2.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      tabi3Image: file(relativePath: { eq: "tabi3.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+      podcastImage: file(relativePath: { eq: "podcast.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400, maxHeight: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
     }
   `)
 
   return (<Layout>
     <SEO title="Home" />
-    {/* <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> */}
 
     <section>
       <a name="information"></a>
       <h2>📢お知らせ</h2>
-      <div class="information-box">
+      <MessageBox>
         <p>
           Nomadineersでは同人誌『旅するエンジニア』の執筆者、Podcastの出演者を募集しております。<br/>
           下記のような方はお気軽に<a href="#contact">お問い合わせフォーム</a>よりご応募ください。
@@ -44,7 +62,7 @@ const IndexPage = () => {
           <li>多様な働き方をしているエンジニア</li>
           <li>その他、Nomadineersの活動に当てはまりそうな方</li>
         </ul>
-      </div>
+      </MessageBox>
     </section>
 
     <section>
@@ -67,38 +85,23 @@ const IndexPage = () => {
       <p>
         旅をテーマにしたNomadineers達のエッセイ集です。
       </p>
-      <div class="books-list">
-        <div class="books-list__item">
-          <h4 class="books-list__title">旅するエンジニア1</h4>
-          <a href="https://nomadineers.booth.pm/items/1419740" target="_blank" title="旅するエンジニア1">
-            <Img fluid={data.tabi1Image.childImageSharp.fluid} alt="旅するエンジニア1" title="旅するエンジニア1" class="books-list__img" />
-          </a>
-          <div class="books-list__description">
-            <div class="books-list__price">電子書籍 ￥1,000</div>
-            <a href="https://nomadineers.booth.pm/items/1419740" target="_blank" class="u-button--standard" title="旅するエンジニア1">Boothで購入する</a>
-          </div>
-        </div>
-        <div class="books-list__item">
-          <h4 class="books-list__title">旅するエンジニア2</h4>
-          <a href="https://nomadineers.booth.pm/items/1319971" target="_blank" title="旅するエンジニア2">
-            <img src="imgages/tabi2.jpg" alt="旅するエンジニア2" title="旅するエンジニア2" class="books-list__img" />
-          </a>
-          <div class="books-list__description">
-            <div class="books-list__price">電子書籍 ￥1,000</div>
-            <a href="https://nomadineers.booth.pm/items/1319971" target="_blank" class="u-button--standard" title="旅するエンジニア2">Boothで購入する</a>
-          </div>
-        </div>
-        <div class="books-list__item">
-          <h4 class="books-list__title">旅するエンジニア3</h4>
-          <a href="https://nomadineers.booth.pm/items/1573735" target="_blank" title="旅するエンジニア3">
-            <img src="imgages/tabi3.jpg" alt="旅するエンジニア3" title="旅するエンジニア3" class="books-list__img" />
-          </a>
-          <div class="books-list__description">
-            <div class="books-list__price">電子書籍 ￥1,000</div>
-            <a href="https://nomadineers.booth.pm/items/1573735" target="_blank" class="u-button--standard" title="旅するエンジニア3">Boothで購入する</a>
-          </div>
-        </div>
-      </div>
+      <Books>
+        <Book
+          title="旅するエンジニア1"
+          selling_url="https://nomadineers.booth.pm/items/1419740"
+          image_fluid={data.tabi1Image.childImageSharp.fluid}
+        ></Book>
+        <Book
+          title="旅するエンジニア2"
+          selling_url="https://nomadineers.booth.pm/items/1319971"
+          image_fluid={data.tabi2Image.childImageSharp.fluid}
+        ></Book>
+        <Book
+          title="旅するエンジニア3"
+          selling_url="https://nomadineers.booth.pm/items/1573735"
+          image_fluid={data.tabi3Image.childImageSharp.fluid}
+        ></Book>
+      </Books>
     </section>
 
     <section>
@@ -111,7 +114,8 @@ const IndexPage = () => {
       </p>
       <div class="podcast">
         <a href="https://anchor.fm/nomadineers" target="_blank" title="Nomadineers Podcast">
-          <img src="imgages/podcast.jpg" alt="podcast" title="Nomadineers Podcast" />
+          {/* 画像が小さくなる。多分responsive対応を自動でやってる */}
+          <Img fluid={data.podcastImage.childImageSharp.fluid} alt="Nomadineers Podcast" title="Nomadineers Podcast" class="books-list__img" />
         </a>
         <br />
         <p>
