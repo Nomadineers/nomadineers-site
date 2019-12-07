@@ -1,13 +1,26 @@
 import React from "react"
-import { Link } from "gatsby"
-// import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
+// import { Link } from "gatsby"
+import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      tabi1Image: file(relativePath: { eq: "tabi1.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  return (<Layout>
     <SEO title="Home" />
     {/* <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
@@ -58,7 +71,7 @@ const IndexPage = () => (
         <div class="books-list__item">
           <h4 class="books-list__title">旅するエンジニア1</h4>
           <a href="https://nomadineers.booth.pm/items/1419740" target="_blank" title="旅するエンジニア1">
-            <img src="img/tabi1.jpg" alt="旅するエンジニア1" title="旅するエンジニア1" class="books-list__img" />
+            <Img fluid={data.tabi1Image.childImageSharp.fluid} alt="旅するエンジニア1" title="旅するエンジニア1" class="books-list__img" />
           </a>
           <div class="books-list__description">
             <div class="books-list__price">電子書籍 ￥1,000</div>
@@ -68,7 +81,7 @@ const IndexPage = () => (
         <div class="books-list__item">
           <h4 class="books-list__title">旅するエンジニア2</h4>
           <a href="https://nomadineers.booth.pm/items/1319971" target="_blank" title="旅するエンジニア2">
-            <img src="img/tabi2.jpg" alt="旅するエンジニア2" title="旅するエンジニア2" class="books-list__img" />
+            <img src="imgages/tabi2.jpg" alt="旅するエンジニア2" title="旅するエンジニア2" class="books-list__img" />
           </a>
           <div class="books-list__description">
             <div class="books-list__price">電子書籍 ￥1,000</div>
@@ -78,7 +91,7 @@ const IndexPage = () => (
         <div class="books-list__item">
           <h4 class="books-list__title">旅するエンジニア3</h4>
           <a href="https://nomadineers.booth.pm/items/1573735" target="_blank" title="旅するエンジニア3">
-            <img src="img/tabi3.jpg" alt="旅するエンジニア3" title="旅するエンジニア3" class="books-list__img" />
+            <img src="imgages/tabi3.jpg" alt="旅するエンジニア3" title="旅するエンジニア3" class="books-list__img" />
           </a>
           <div class="books-list__description">
             <div class="books-list__price">電子書籍 ￥1,000</div>
@@ -98,7 +111,7 @@ const IndexPage = () => (
       </p>
       <div class="podcast">
         <a href="https://anchor.fm/nomadineers" target="_blank" title="Nomadineers Podcast">
-          <img src="img/podcast.jpg" alt="podcast" title="Nomadineers Podcast" />
+          <img src="imgages/podcast.jpg" alt="podcast" title="Nomadineers Podcast" />
         </a>
         <br />
         <p>
@@ -132,7 +145,7 @@ const IndexPage = () => (
           width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
       </div>
     </section>
-  </Layout>
-)
+  </Layout>)
+}
 
 export default IndexPage
