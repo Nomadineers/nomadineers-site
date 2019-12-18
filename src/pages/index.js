@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import MessageBox from "../components/message_box"
 import Books from "../components/books"
 import Book from "../components/book"
+import Emoji from "../components/emoji"
 
 // import Image from "../components/image"
 import SEO from "../components/seo"
@@ -50,7 +51,7 @@ const IndexPage = () => {
 
     <section>
       <a name="information"></a>
-      <h2>📢お知らせ</h2>
+      <h2><Emoji emoji="📢" ariaLabel="Speaker" />お知らせ</h2>
       <MessageBox>
         <p>
           Nomadineersでは同人誌『旅するエンジニア』の執筆者、Podcastの出演者を募集しております。<br/>
@@ -67,7 +68,7 @@ const IndexPage = () => {
 
     <section>
       <a name="whatis"></a>
-      <h2>🐑Nomadineersとは</h2>
+      <h2><Emoji emoji="🐑" ariaLabel="Sheep" />Nomadineersとは</h2>
       <p>
         Nomadineers とは遊牧民を意味する nomad と engineers を組み合わせた造語です。
         <a href="https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%9E%E3%83%89%E3%83%AF%E3%83%BC%E3%82%AB%E3%83%BC">ノマドワーカー</a>をエンジニアに限定した言葉です。
@@ -81,7 +82,7 @@ const IndexPage = () => {
 
     <section>
       <a name="traveled-engineers"></a>
-      <h2>📕同人誌『旅するエンジニア』シリーズ</h2>
+      <h2><Emoji emoji="📕" ariaLabel="Book" />同人誌『旅するエンジニア』シリーズ</h2>
       <p>
         旅をテーマにしたNomadineers達のエッセイ集です。
       </p>
@@ -106,7 +107,7 @@ const IndexPage = () => {
 
     <section>
       <a name="podcast"></a>
-      <h2>📻Podcast『Nomadineers』</h2>
+      <h2><Emoji emoji="📻" ariaLabel="Podcast" />Podcast『Nomadineers』</h2>
       <p>
         同人誌『旅するエンジニア』シリーズの執筆者などをゲストに向かえつつ、
         旅の様子やフリーランスエンジニアとしての生き方などについて紹介するPodcastです。
@@ -129,7 +130,7 @@ const IndexPage = () => {
     <section>
       <a name="sns">
       </a>
-      <h2>🐦SNS</h2>
+      <h2><Emoji emoji="🐦" ariaLabel="Bird" />SNS</h2>
       <ul>
         <li>
           <a href="https://twitter.com/nomadineers">Twitter / Nomadineers</a>
@@ -142,7 +143,7 @@ const IndexPage = () => {
 
     <section>
       <a name="contact"></a>
-      <h2>📮お問い合わせ</h2>
+      <h2><Emoji emoji="📮" ariaLabel="Post" />お問い合わせ</h2>
       <div class="contact-form">
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSeGlibsGDl1Ri2i1qXX7s42MXcBZVMCrUMZPZJoosCcC96xvQ/viewform?embedded=true"
